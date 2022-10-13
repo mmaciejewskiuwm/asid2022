@@ -1,108 +1,62 @@
-# a = 'jan'
-# b = 'kowalski'
-# r1 = 20
-# r2 = 20
-# wiek = 20
-#
-#
-# def zad1(imie, nazwisko):
-#     return imie + '.' + nazwisko
-#
-#
-# c = zad1(a, b)
-# print(c)
-#
-#
-# def zad2(imie, nazwisko):
-#     return imie[0].upper() + '.' + nazwisko.capitalize()
-#
-#
-# print(zad2(a, b))
-#
-#
-# def zad3(r1, r2, uro):
-#     uro = uro - r2
-#     r1 = r1 * 100
-#     return r1 - uro
-#
-#
-# print(zad3(r1, r2, wiek))
-#
-#
-# def zad4(imie, nazwisko, zad2):
-#     return zad2(imie, nazwisko)
-#
-#
-# print(zad4(a, b, zad2))
-#
-#
-# def zad5(c, d):
-#     if (c > 0 | d >= 0):
-#         return c / d
-#
-#
-# print(zad5(20, 5))
+from typing import Any
 
 
-#zad6
+class Node: #podstawa listy
+    value: Any
+    next: 'Node'
 
-# zmienna=0
-# x=0
-# while(zmienna<100):
-#     print('podaj liczbe, suma wartosci nie moze przegraczac 100')
-#     x = int(input())
-#     zmienna+=x
-#     x=0
-#     print(zmienna)
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+        return
 
+class LinkedList:
+    head: Node
+    tail: Node
 
-# lista = [3,4,29,10]
-# def zad7(lista):
-#     return tuple(lista)
-# # print(zad7(lista))
-# #
-# #
-#
-# #zad8
-# lista2=[]
-# dlugosc = 0
-# while dlugosc <5:
-#     x = int(input())
-#     lista2.append(x)
-#     dlugosc +=1
-# print(zad7(lista2))
-lista3 = ['poniedzialek','wtorek','sroda','czwartek','piatek','sobota','niedziela']
-def zad9(licz):
-    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def push(self, value: Any):
+        nowy = Node(value)
+        if (self.head):
+            temp = self.head
+            while(temp.next):
+                a = temp
+                temp = nowy
+                temp.next = a
 
 
 
 
 
+    def append(self, value: Any):
+        nowy = Node(value)
+        if (self.head):
+            temp = self.head
+            while(temp.next):
+                temp=temp.next
+            temp.next = nowy
+        else:
+            self.head = nowy
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def __str__(self):
+        temp = self.head
+        print(f'pierwszy element listy :{temp.data}')
+        while(temp):
+            temp = temp.next
+            if(temp.next==None):
+                return f'ostatni element listy :{temp.data}'
+            else:
+                print(f'Lista:{temp.data}')
+lista = LinkedList()
+lista.append(12)
+lista.push(10)
+lista.append(30)
+lista.append(45)
+print(str(lista))
 
 
 
